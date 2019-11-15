@@ -1,1 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 2 meta tags should come first in the head; any other head content should come *after* these tags -->
 
+    <!-- Bootstrap -->
+
+    <!-- Latest compiled and minified bootstrap CSS -->
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+  <title>{% block title %}{% endblock %} - My Webpage</title>
+  
+  
+  </head>
+  <body>
+    <!--nav bar-->
+    <nav class="navbar navbar-expand-sm bg-light navbar-light">
+      <a class="navbar-brand" href="/">Classics</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/jsonInfo">Info Available</a>
+          </li>          
+          <li class="nav-item">
+            <a class="nav-link" href="/EvenMoreInfo">Still Curious?</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/links">Great Sources</a>
+          </li>     
+        </ul>
+      </div>  
+    </nav>
+    
+    <!--page content-->
+    {%  block content %}{% endblock %}
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    
+  </body>
+</html>

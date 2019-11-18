@@ -10,7 +10,7 @@ def render_main():
 def InfoAvailable():
     with open('classics.json') as classics_data:
         titles = json.load(classics_data)
-    return render_template('InfoAvailable, options = get_title_options(titles))
+    return render_template('InfoAvailable.html', options = get_title_options(titles))
                            
 def get_title_options(titles):
     listOfTitles = []

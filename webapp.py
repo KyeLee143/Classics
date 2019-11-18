@@ -6,8 +6,8 @@ app = Flask(__name__) #__name__ = "__main__" if this is the file that was run.  
 def render_main():
     return render_template('home.html')
     
-@app.route("/InfoAvailable")
-def InfoAvailable():
+@app.route("/jsonInfo")
+def jsonInfo():
     with open('classics.json') as classics_data:
         titles = json.load(classics_data)
     return render_template('InfoAvailable.html', options = get_title_options(titles))

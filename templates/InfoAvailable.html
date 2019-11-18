@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% set active_page = "InfoAvailble" %}
+
+{% block title %}Classic Info{% endblock %}
+  
+{% block content %}
+
+<h2>Learn more about the Classics you herd of!</h2>
+<p>Select a State:</p>
+
+<form action="/InfoAvailable">
+  <select name="Books">
+   {{ options }}
+  </select>
+  <br><br>
+  <input type="submit">
+</form>
+
+{%endblock%}
+

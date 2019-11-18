@@ -7,7 +7,7 @@ def render_main():
     return render_template('home.html')
     
     
-    @app.route("/jsonInfo")
+@app.route("/jsonInfo")
 def render_page1():
     return render_template('InfoAvailable.html')
     

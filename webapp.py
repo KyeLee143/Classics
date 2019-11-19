@@ -9,15 +9,17 @@ def render_main():
     return render_template('home.html')
     
     
+    
 @app.route("/jsonInfo")
 def bookInfo():
     with open('classics.json') as classics_data:
-        titles = json.load(classics_data)
-    return render_template('InfoAvailable.html', options = get_title_options(titles))
+        info = json.load(classics_data)
+    return render_template('InfoAvailable.html', options = get_title_options(info))
                            
-def get_title_options(titles):
+                           
+def get_title_options(info):
         listOfTitles = []
-        for data in titles:
+        for data in info:
             if not (data ['bibliography']['title'] in listOfTitles):
                 listOfTitles.append (data['bibliography']['title'])
         options = '' 
@@ -37,6 +39,7 @@ def render_page2():
 @app.route("/links")
 def render_page3():
     return render_template('GreatSources.html')
-    
+ 
+ 
 if __name__=="__main__":
     app.run(debug=False, port=54321)

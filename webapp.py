@@ -1,4 +1,4 @@
-from flask import Flask, url_for, render_template, request
+from flask import Flask, url_for, render_template, request, Markup
 import os 
 import json
 
@@ -15,17 +15,26 @@ def bookInfo():
     with open('classics.json') as classics_data:
         info = json.load(classics_data)
     return render_template('InfoAvailable.html', options = get_title_options(info))
-                           
-                           
+                                                     
+@app.route("/EvenMoreInfo")
+def titleInfo():
+    with open('classics.json') as classics_data:
+        info = json.load(classics_data)
+    return render_template('StillCurious.html', options = get_title_options(info))
+                                                     
 def get_title_options(info):
         listOfTitles = []
         for data in info:
             if not (data ['bibliography']['title'] in listOfTitles):
                 listOfTitles.append (data['bibliography']['title'])
-        options = '' 
+        options = ''
         for data in listOfTitles:
             options = options + Markup("<option value=\"" + data + "\">" + data + "</options>")
         return options
+    
+
+
+
     
     
 @app.route("/jsonInfo")

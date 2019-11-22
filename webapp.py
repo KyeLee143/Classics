@@ -32,9 +32,21 @@ def get_title_options(info):
             options = options + Markup("<option value=\"" + data + "\">" + data + "</options>")
         return options
     
-
-
-
+@app.route("/basicInfo")
+def response_basicInfo():
+    with open('classics.json') as classics_data:
+         info = json.load(classics_data)
+    return render_template('StillCurious.html', dataPoint = get_basic_info(info))    
+    
+@app.route("/get_basic_info")
+def response_get_basic_info():
+    basic_info = request.args['InfoAvailable'] 
+    if basic_info == ['bibliography']['title']:
+        response = ['bibliography']['author']['name']
+    
+    return render_template('response.html', responseFromServer=response)
+    
+    
     
     
 @app.route("/jsonInfo")

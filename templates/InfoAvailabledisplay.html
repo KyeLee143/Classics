@@ -1,0 +1,9 @@
+{% extends "InfoAvailable.html" %}
+
+{% block body %}
+{{ super() }}
+
+<h3>Most popular shows in {{ year }}</h3>
+<p>Author: {{ mostPerformed }} performed {{ performances }} times.</p>
+
+{% endblock %}

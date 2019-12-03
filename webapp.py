@@ -21,6 +21,12 @@ def titleInfo():
     with open('classics.json') as classics_data:
         info = json.load(classics_data)
     return render_template('StillCurious.html', options = get_title_options(info))
+    
+@app.route("/response")
+def response():
+    with open('classics.json') as classics_data:
+        info = json.load(classics_data)
+    return render_template('response.html', options = get_title_options(info))
                                                      
 def get_title_options(info):
         listOfTitles = []
@@ -32,10 +38,10 @@ def get_title_options(info):
             options = options + Markup("<option value=\"" + data + "\">" + data + "</options>")
         return options
     
-def response_basicInfo():
+"""def response_basicInfo():
     with open('classics.json') as classics_data:
          info = json.load(classics_data)
-    return render_template('response.html', dataPoint = get_basic_info(info))  
+    return render_template('response.html', dataPoint = get_basic_info(info))"""  
 
     
 @app.route("/InfoAvailable")
@@ -44,10 +50,11 @@ def response_get_basic_info():
     with open('classics.json') as classics_data:
          info = json.load(classics_data)
     for data in info:
-        if basic_info == ['bibliography']['title']:
-            response = ['bibliography']['author']['name']
+        if basic_info == data['bibliography']['title']:
+            response = data['bibliography']['author']['name'], data['bibliography']['author']['birth']
+            
     for data in response:
-        return render_template('response.html', responseFromServer=response)
+        return render_template('response.html', responseFromServer=response, options = get_title_options(info))
     
     
     

@@ -70,7 +70,7 @@ def response_more_basic_info():
          info = json.load(classics_data)
     for data in info:
         if more_info == data['bibliography']['title']:
-            response = data['publication']['month name'], data['publication']['day'], data['publication']['year']
+            response = data['bibliography']['publication']['month name'] + " " + str(data['bibliography']['publication']['day']) + "," + str(data['bibliography']['publication']['year'])
             
     for data in response:
         return render_template('StillCurious.html', responseFromServer2=response, options = get_title_options(info))

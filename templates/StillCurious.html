@@ -9,12 +9,14 @@
 <h2>Added on to what you might already know!</h2>
 <p>Select a Classic Book:</p>
 
-<form action="/InfoAvailable">
+<form action="/StillCurious">
   <select name="title">
    {{ options }}
   </select>
   <br><br>
   <input type="submit">
 </form>
+
+<p>Publication date: {{responseFromServer2}} </p>
 
 {%endblock%}

@@ -16,11 +16,11 @@ def bookInfo():
         info = json.load(classics_data)
     return render_template('InfoAvailable.html', options = get_title_options(info))
                                                      
-@app.route("/EvenMoreInfo")
+"""@app.route("/EvenMoreInfo")
 def titleInfo():
     with open('classics.json') as classics_data:
         info = json.load(classics_data)
-    return render_template('StillCurious.html', options = get_title_options(info))
+    return render_template('StillCurious.html', options = get_title_options(info))"""
     
 @app.route("/response")
 def response():
@@ -54,7 +54,26 @@ def response_get_basic_info():
             response = data['bibliography']['author']['name'], data['bibliography']['author']['birth']
             
     for data in response:
-        return render_template('response.html', responseFromServer=response, options = get_title_options(info))
+        return render_template('InfoAvailable.html', responseFromServer=response, options = get_title_options(info))
+        
+ 
+@app.route("/EvenMoreInfo")
+def titleInfo():
+    with open('classics.json') as classics_data:
+        info = json.load(classics_data)
+    return render_template('StillCurious.html', options = get_title_options(info))
+        
+@app.route("/StillCurious")
+def response_more_basic_info(): 
+    more_info = request.args['title'] 
+    with open('classics.json') as classics_data:
+         info = json.load(classics_data)
+    for data in info:
+        if more_info == data['bibliography']['title']:
+            response = data['publication']['month name'], data['publication']['day'], data['publication']['year']
+            
+    for data in response:
+        return render_template('StillCurious.html', responseFromServer2=response, options = get_title_options(info))
     
     
     

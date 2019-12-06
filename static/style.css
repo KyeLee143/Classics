@@ -1,14 +1,29 @@
 #content {
-     margin-left: 20px;
+     
 }
-.InfoAvailable{
+.layout{
 
 }
 p{
-	text-align:center;
+	text-align: left;
 	margin-left: 20px;
 	margin-right: 20px;
 	margin-bottom: 20px;
-	font-family: "Times New Roman", Times, serif;
+    margin-top: 20px;
+	font-family: "Verdana", Geneva, sans-serif;
+	font-size: 24;
+}
+h1{
+	text-align:left;
+	margin-right: 20px;
+	margin-bottom: 20px;
+	font-family: "Verdana", Geneva, sans-serif;
+	font-size: 14;
+}
+h2{
+	text-align:left;
+	margin-right: 20px;
+	margin-bottom: 20px;
+	font-family: "Verdana", Geneva, sans-serif;
 	font-size: 14;
 }

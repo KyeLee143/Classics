@@ -51,10 +51,15 @@ def response_get_basic_info():
          info = json.load(classics_data)
     for data in info:
         if basic_info == data['bibliography']['title']:
-            response = data['bibliography']['author']['name'], data['bibliography']['author']['birth']
+            response = data['bibliography']['author']['name'] 
+            birth = data['bibliography']['author']['birth']
+            death = data['bibliography']['author']['death']
+            subject = data['bibliography']['subjects']
+            downloads = data['metadata']['downloads']
+            link = data['metadata']['url']
             
     for data in response:
-        return render_template('InfoAvailable.html', responseFromServer=response, options = get_title_options(info))
+        return render_template('InfoAvailable.html', responseFromServer=response, options = get_title_options(info), responseFromServer2 = birth, responseFromServer3 = death, responseFromServer4 = subject, responseFromServer5 = downloads, responseFromServer6 = link)
         
  
 @app.route("/EvenMoreInfo")
@@ -71,9 +76,12 @@ def response_more_basic_info():
     for data in info:
         if more_info == data['bibliography']['title']:
             response = data['bibliography']['publication']['month name'] + " " + str(data['bibliography']['publication']['day']) + "," + str(data['bibliography']['publication']['year'])
+            words = data ['statistics']['words']
+            formats = data ['metadata']['formats']['total'] + "Types of formats" + ['metadata']['formats']['types']
+            Cclassification = data ['bibliography']['congress classifications']
             
     for data in response:
-        return render_template('StillCurious.html', responseFromServer2=response, options = get_title_options(info))
+        return render_template('StillCurious.html', responseFromServer7=response, options = get_title_options(info), responseFromServer8 = words, responseFromServer9 = formats, responseFromServer10 = Cclassification)
     
     
     

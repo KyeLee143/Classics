@@ -51,6 +51,7 @@ def response_get_basic_info():
          info = json.load(classics_data)
     for data in info:
         if basic_info == data['bibliography']['title']:
+            Book = data['bibliography']['title']
             response = data['bibliography']['author']['name'] 
             birth = data['bibliography']['author']['birth']
             death = data['bibliography']['author']['death']
@@ -59,7 +60,7 @@ def response_get_basic_info():
             link = data['metadata']['url']
             
     for data in response:
-        return render_template('InfoAvailable.html', responseFromServer=response, options = get_title_options(info), responseFromServer2 = birth, responseFromServer3 = death, responseFromServer4 = subject, responseFromServer5 = downloads, responseFromServer6 = link)
+        return render_template('InfoAvailable.html', responseFromServer = Book, responseFromServer2 = response, options = get_title_options(info), responseFromServer3 = birth, responseFromServer4 = death, responseFromServer5 = subject, responseFromServer6 = downloads, responseFromServer7 = link)
         
  
 @app.route("/EvenMoreInfo")
@@ -75,13 +76,15 @@ def response_more_basic_info():
          info = json.load(classics_data)
     for data in info:
         if more_info == data['bibliography']['title']:
+            book = data['bibliography']['title']
             response = data['bibliography']['publication']['month name'] + " " + str(data['bibliography']['publication']['day']) + "," + str(data['bibliography']['publication']['year'])
-            words = data ['statistics']['words']
-            formats = data ['metadata']['formats']['total'] + "Types of formats" + ['metadata']['formats']['types']
+            words = str(data['metrics']['statistics']['words'])
+            formatsN = str(data['metadata']['formats']['total'])
+            formats = data['metadata']['formats']['types']
             Cclassification = data ['bibliography']['congress classifications']
             
     for data in response:
-        return render_template('StillCurious.html', responseFromServer7=response, options = get_title_options(info), responseFromServer8 = words, responseFromServer9 = formats, responseFromServer10 = Cclassification)
+        return render_template('StillCurious.html',responseFromServer8 = book, responseFromServer9 = response, options = get_title_options(info), responseFromServer10 = words, responseFromServer11 = formatsN, responseFromServer12 = formats, responseFromServer13 = Cclassification)
     
     
     

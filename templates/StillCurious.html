@@ -17,7 +17,7 @@
   <input type="submit">
 </form>
 
-<p> Book chosen: {{responseFromServer8}}</p>
+<p> Book chosen: <b>{{responseFromServer8}}</b></p>
 
 <p>Publication date: {{responseFromServer9}}</p>
 
@@ -29,6 +29,6 @@
 
 <p>Congress Classification: {{responseFromServer13}}</p>
 
-<img> </imp>
+<img src="{{url_for('static', filename = 'Classification2.jpg')}}" alt="Congress Classification chart">
 
 {%endblock%}

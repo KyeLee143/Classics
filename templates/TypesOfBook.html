@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% set active_page = "TypesOfBook" %}
+
+{% block title %}Find books with specific congress classification.{% endblock %}
+  
+{% block content %}
+
+<h2>Interested in a specific type of book?</h2>
+<p>Select a Congress Classification:</p>
+
+
+
+<div class="dropdown">
+    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+      Choices
+    </button>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="#">types</a>
+    </div>
+  </div>
+
+
+<img src="{{url_for('static', filename = 'Classification3.png')}}" alt="Congress Classification chart">
+
+{%endblock%}

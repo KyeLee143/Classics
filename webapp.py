@@ -16,11 +16,6 @@ def bookInfo():
         info = json.load(classics_data)
     return render_template('InfoAvailable.html', options = get_title_options(info))
                                                      
-"""@app.route("/EvenMoreInfo")
-def titleInfo():
-    with open('classics.json') as classics_data:
-        info = json.load(classics_data)
-    return render_template('StillCurious.html', options = get_title_options(info))"""
     
 @app.route("/response")
 def response():
@@ -37,11 +32,7 @@ def get_title_options(info):
         for data in listOfTitles:
             options = options + Markup("<option value=\"" + data + "\">" + data + "</options>")
         return options
-    
-"""def response_basicInfo():
-    with open('classics.json') as classics_data:
-         info = json.load(classics_data)
-    return render_template('response.html', dataPoint = get_basic_info(info))"""  
+      
 
     
 @app.route("/InfoAvailable")
@@ -86,6 +77,23 @@ def response_more_basic_info():
     for data in response:
         return render_template('StillCurious.html',responseFromServer8 = book, responseFromServer9 = response, options = get_title_options(info), responseFromServer10 = words, responseFromServer11 = formatsN, responseFromServer12 = formats, responseFromServer13 = Cclassification)
     
+@app.route("/congressclassification")
+def congressclassification():
+    with open('classics.json') as classics_data:
+        info = json.load(classics_data)
+    return render_template('TypesOfBook.html', types = booktypes(info))
+
+def booktypes(info):
+    listOfTypes = []
+    for data in info:
+        if not (data ['bibliography']['congress classifications'] in listOfTypes):
+            listOfTypes.append (data['bibliography']['congress classifications'])
+    types = ''
+    for data in listOfTypes:
+        types = types + Markup('<a class="dropdown-item" href="#">' + data + '</a>')
+    return types
+    
+    
     
     
     
@@ -97,9 +105,9 @@ def render_page1():
 def render_page2():
     return render_template('StillCurious.html')
 
-@app.route("/links")
+@app.route("/congressclassification")
 def render_page3():
-    return render_template('GreatSources.html')
+    return render_template('TypesOfBook.html')
  
  
 if __name__=="__main__":

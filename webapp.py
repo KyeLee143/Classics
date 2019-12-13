@@ -89,9 +89,22 @@ def booktypes(info):
         if not (data ['bibliography']['congress classifications'] in listOfTypes):
             listOfTypes.append (data['bibliography']['congress classifications'])
     types = ''
+    
     for data in listOfTypes:
         types = types + Markup('<a class="dropdown-item" href="#">' + data + '</a>')
     return types
+ 
+@app.route("/Books") 
+def bookTiles():
+    cc_Books = request.args['congress classifications']
+    with open ('classics.json')as classics_data:
+        info = json.load(classics_data)
+    for data in info:
+        if cc_Books == data['bibliography']['congress classifications']:
+            books = data['bibliography']['title']
+            
+    for data in response:
+        return render_template('TypesOfBook.html', responseFromServer14 = books)
     
     
     

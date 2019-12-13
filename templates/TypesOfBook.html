@@ -11,14 +11,16 @@
 
 
 
-<div class="dropdown">
+<div class="dropdown dropright">
     <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
       Choices
     </button>
     <div class="dropdown-menu">
-      <a class="dropdown-item" href="#">types</a>
+      {{ types }}
     </div>
   </div>
+  
+<p>Books available: {{responseFromServer14}} </p>
 
 
 <img src="{{url_for('static', filename = 'Classification3.png')}}" alt="Congress Classification chart">

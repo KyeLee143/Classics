@@ -91,20 +91,20 @@ def booktypes(info):
     types = ''
     
     for data in listOfTypes:
-        types = types + Markup('<a class="dropdown-item" href="#">' + data + '</a>')
+        types = types + Markup('<a class="dropdown-item" href="/Books?congressclassifications='+ data +'">' + data + '</a>')
     return types
  
 @app.route("/Books") 
 def bookTiles():
-    cc_Books = request.args['congress classifications']
+    cc_Books = request.args['congressclassifications']
     with open ('classics.json')as classics_data:
         info = json.load(classics_data)
+    books = ''    
     for data in info:
         if cc_Books == data['bibliography']['congress classifications']:
-            books = data['bibliography']['title']
+            books += data['bibliography']['title']
             
-    for data in response:
-        return render_template('TypesOfBook.html', responseFromServer14 = books)
+    return render_template('TypesOfBook.html', responseFromServer14 = books)
     
     
     
@@ -124,4 +124,4 @@ def render_page3():
  
  
 if __name__=="__main__":
-    app.run(debug=False, port=54321)
+    app.run(debug=True, port=54321)

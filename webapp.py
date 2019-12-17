@@ -102,9 +102,10 @@ def bookTiles():
     books = ''    
     for data in info:
         if cc_Books == data['bibliography']['congress classifications']:
-            books += data['bibliography']['title']
+            Class = data['bibliography']['congress classifications']
+            books += data['bibliography']['title'] + "." + " "
             
-    return render_template('TypesOfBook.html', responseFromServer14 = books)
+    return render_template('TypesOfBook.html', responseFromServer14 = books, responseFromServer15 = Class)
     
     
     

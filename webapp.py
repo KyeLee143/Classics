@@ -105,7 +105,7 @@ def bookTiles():
             Class = data['bibliography']['congress classifications']
             books += data['bibliography']['title'] + "." + " "
             
-    return render_template('TypesOfBook.html', responseFromServer14 = books, responseFromServer15 = Class)
+    return render_template('TypesOfBook.html', responseFromServer14 = books, responseFromServer15 = Class, types = booktypes(info))
     
     
     
@@ -125,4 +125,4 @@ def render_page3():
  
  
 if __name__=="__main__":
-    app.run(debug=True, port=54321)
+    app.run(debug=False, port=54321)
